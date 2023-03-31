@@ -1,0 +1,17 @@
+{% extends 'base.html.twig'%}
+{% block body %}
+{% if (message) %}
+    {{message}}
+{% endif %}
+{% for employe in ensEmployes %}<br/>
+    Nom Employe : <b>{{ employe.nom }}<br/></b>
+   Prenom Employe :  <b>{{ employe.prenom }}</b><br/>
+{% endfor %}
+<br>
+{% set id = 1234 %}
+<a class="btn btn-primary" href="{{ path('app_aff_inscr_employe', {'id': id}) }}">Voir les inscriptions</a></br>
+
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+{% endblock %}

@@ -1,0 +1,39 @@
+
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+{% endblock %}
+
+{% block body %}
+<div class="container py-4">
+    <div class="border border-secondary rounded p-3 mb-4">
+        <h1 class="text-center mb-0">Inscription Formation</h1>
+    </div>
+    {% if (message) %}
+        <div class="alert alert-info" role="alert">
+            {{ message }}
+        </div>
+    {% endif %}
+    {% for formation in ensFormations %}
+        <div class="card mb-3 shadow">
+            <div class="card-body">
+                <h5 class="card-title">Libelle Produit: <b>{{ formation.produit.libelle }}</b></h5>
+                <p class="card-text">Date debut Formation : <b>{{ formation.dateDebut|date("Y/m/d") }}</b></p>
+                <p class="card-text">Nombres d'heures : <b>{{ formation.nbreHeures }}</b></p>
+                <p class="card-text">Departement : <b>{{ formation.departement }}</b></p>
+                <p class="card-text">Sommaire : <b>{{ formation.sommaire }}</b></p>
+                <a href="{{path('app_aff_FormEmploye', {'id': formation.id}) }}"class="btn btn-success">S'inscrire a cette formation</a></br>
+            </div>
+        </div>
+    {% endfor %}
+   <div class="row my-4">
+    <div class="col-md-4 offset-md-4">
+        <a class="btn btn-primary w-100" href="http://projet-symfony-formation.fr/login" role="button">
+            Deconnexion
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+
